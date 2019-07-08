@@ -58,8 +58,10 @@ export default function SearchBar(props) {
   };
 
   const handleSearch = () => {
-    alert(values.query)
-    console.log(props.changeQuery())
+    // alert(values.query)
+    console.log(props.changeQuery)
+    props.changeQuery(values.query)
+    
   };
 
   return (

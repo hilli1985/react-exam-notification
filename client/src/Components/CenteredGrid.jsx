@@ -26,7 +26,7 @@ const styles = (theme => ({
     super(props);
     this.state = {
       notifications:[],
-      query:'B-LAO',
+      query:'',
       showOnlyActive:true
     };
   }
@@ -39,10 +39,10 @@ const styles = (theme => ({
 
   notificationRenderer = () => {
     const {showOnlyActive, query} = this.state
-    return this.state.notifications.map(n => 
-      {return (n.active || showOnlyActive) && <Notification notification={n}/>}
-      )
-      // .filter(a => a.information.includes(query))
+    return this.state.notifications
+    .filter(a => a.information.includes(query))
+    .map(n => 
+      {return (n.active || showOnlyActive) && <Notification notification={n}/>})
   }
 
   toggelshowOnlyActive = () => {
@@ -50,8 +50,7 @@ const styles = (theme => ({
     this.setState ({showOnlyActive : !showOnlyActive })
   }
 
-  changeQuery= (query) => {
-    alert('query', query)
+  changeQuery = (query) => {
     this.setState ({query : query})
   }
 
